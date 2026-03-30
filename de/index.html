@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellaDeals — Die besten Produkte, für dich ausgewählt</title>
+    <meta name="description" content="Entdecke die besten Produkte auf Amazon: Kaufratgeber, Vergleiche und ehrliche Empfehlungen für die richtige Wahl.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF7;
+            --surface: #FFFFFF;
+            --text: #1A1A1A;
+            --text-secondary: #6B6B6B;
+            --accent: #C0392B;
+            --accent-light: #FADBD8;
+            --border: #E8E6E1;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-hover: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+        .logo span { color: var(--text); }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .lang-badge { background: var(--accent-light); color: var(--accent); padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; }
+        .hero { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 3rem; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem; }
+        .categories { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .cat-tag { background: var(--surface); border: 1px solid var(--border); padding: 8px 18px; border-radius: 24px; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); cursor: default; transition: all 0.2s; }
+        .cat-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        .grid { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: box-shadow 0.3s, transform 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+        .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+        .card-img { height: 180px; background: linear-gradient(135deg, var(--accent-light), #e8ddd4); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+        .card-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 0.5rem; }
+        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.6rem; }
+        .card-body p { font-size: 0.88rem; color: var(--text-secondary); flex: 1; }
+        .card-footer { padding: 0 1.4rem 1.2rem; display: flex; align-items: center; justify-content: space-between; }
+        .read-more { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+        .date { font-size: 0.78rem; color: var(--text-secondary); }
+        .about { max-width: 700px; margin: 0 auto; padding: 3rem 2rem 4rem; text-align: center; border-top: 1px solid var(--border); }
+        .about h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem; }
+        .about p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
+        .disclosure { background: var(--accent-light); border-radius: var(--radius); padding: 1.2rem 1.5rem; font-size: 0.82rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem; text-align: center; line-height: 1.6; }
+        footer { background: var(--surface); border-top: 1px solid var(--border); text-align: center; padding: 2rem; }
+        footer p { font-size: 0.82rem; color: var(--text-secondary); }
+        .region-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .region-links a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; font-weight: 500; }
+        .region-links a:hover { color: var(--accent); }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .hero { padding: 3rem 1.2rem 2rem; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/de/" class="logo">Stella<span>Deals</span></a>
+        <div class="nav-links">
+            <a href="#artikel">Artikel</a>
+            <a href="#ueber-uns">Über uns</a>
+            <span class="lang-badge">DE</span>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Die besten Produkte,<br><em>für dich ausgewählt</em></h1>
+    <p>Kaufratgeber, Vergleiche und ehrliche Empfehlungen — damit du auf Amazon immer die richtige Wahl triffst.</p>
+</section>
+
+<div class="categories">
+    <span class="cat-tag">🎧 Audio</span>
+    <span class="cat-tag">💻 Technik</span>
+    <span class="cat-tag">🏠 Haushalt</span>
+    <span class="cat-tag">🏋️ Fitness</span>
+    <span class="cat-tag">🎮 Gaming</span>
+    <span class="cat-tag">📱 Smartphones</span>
+</div>
+
+<div class="grid" id="artikel">
+    <div class="card">
+        <div class="card-img">🎧</div>
+        <div class="card-body">
+            <span class="card-category">Audio</span>
+            <h3>Die 5 besten Bluetooth-Kopfhörer 2025: Großer Vergleich</h3>
+            <p>Klangqualität, Noise Cancelling und Tragekomfort im Vergleich — welcher kabellose Kopfhörer ist der Beste?</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Mär 2025</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img">💻</div>
+        <div class="card-body">
+            <span class="card-category">Technik</span>
+            <h3>Monitore fürs Homeoffice: Welcher passt zu dir?</h3>
+            <p>Von 24 bis 34 Zoll, curved und ultrawide: So findest du den perfekten Monitor für produktives Arbeiten.</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Mär 2025</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img">🏠</div>
+        <div class="card-body">
+            <span class="card-category">Haushalt</span>
+            <h3>Saugroboter im Test: Die 5 Modelle mit dem besten Preis-Leistungs-Verhältnis</h3>
+            <p>Lasernavigation, Absaugstation und Wischfunktion — welcher Saugroboter lohnt sich wirklich?</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Feb 2025</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img">🎮</div>
+        <div class="card-body">
+            <span class="card-category">Gaming</span>
+            <h3>Mechanische Tastaturen unter 100 €: Unsere Favoriten</h3>
+            <p>Red, Brown oder Blue Switches? Die besten mechanischen Tastaturen für Gaming und Büro.</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Feb 2025</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img">🏋️</div>
+        <div class="card-body">
+            <span class="card-category">Fitness</span>
+            <h3>Smartwatches für Sportler: Apple Watch vs Garmin vs Samsung</h3>
+            <p>GPS, Herzfrequenz, Akkulaufzeit: Der große Vergleich der besten Sport-Smartwatches.</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Jan 2025</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img">📱</div>
+        <div class="card-body">
+            <span class="card-category">Smartphones</span>
+            <h3>Die besten Mittelklasse-Smartphones: Ratgeber 2025</h3>
+            <p>Top-Leistung ohne hohe Kosten: Die besten Handys zwischen 200 € und 400 €.</p>
+        </div>
+        <div class="card-footer">
+            <span class="read-more">Weiterlesen →</span>
+            <span class="date">Jan 2025</span>
+        </div>
+    </div>
+</div>
+
+<section class="about" id="ueber-uns">
+    <h2>Über uns</h2>
+    <p>StellaDeals ist ein unabhängiger Blog mit Kaufratgebern und Empfehlungen zu den besten Produkten auf Amazon. Wir testen, vergleichen und bewerten Produkte aus den Bereichen Technik, Haushalt, Fitness und mehr — damit du die richtige Entscheidung treffen kannst.</p>
+    <p>Unser Ziel ist einfach: Dir Zeit sparen mit ehrlichen, gut recherchierten Empfehlungen, damit du mit Vertrauen einkaufst.</p>
+</section>
+
+<div class="disclosure">
+    <strong>Transparenzhinweis:</strong> StellaDeals nimmt am Amazon-Partnerprogramm teil. Wenn du über unsere Links kaufst, erhalten wir möglicherweise eine kleine Provision — ohne zusätzliche Kosten für dich. Das hilft uns, die Seite am Laufen zu halten und weiterhin hilfreiche Inhalte zu erstellen.
+</div>
+
+<footer>
+    <div class="region-links">
+        <a href="/">🇮🇹 Italia</a>
+        <a href="/fr/">🇫🇷 France</a>
+        <a href="/es/">🇪🇸 España</a>
+        <a href="/uk/">🇬🇧 United Kingdom</a>
+        <a href="/nl/">🇳🇱 Nederland</a>
+    </div>
+    <p>© 2025 StellaDeals — Alle Rechte vorbehalten</p>
+</footer>
+
+</body>
+</html>
