@@ -3,148 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StellaDeals Deutschland — Produktempfehlungen</title>
-  <meta name="description" content="Kaufberatung, Vergleiche und Produktempfehlungen für Amazon Deutschland." />
+  <title>StellaDeals Deutschland</title>
+  <meta name="description" content="Ausgewählte Produkte für Amazon Deutschland." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #FAFAF7;
-      --surface: #FFFFFF;
-      --text: #1A1A1A;
-      --text-secondary: #6B6B6B;
-      --accent: #D4763A;
-      --accent-light: #F5E6D8;
-      --border: #E8E6E1;
-      --radius: 12px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      padding: 24px;
-    }
-    .wrap { max-width: 1000px; margin: 0 auto; }
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-    .logo {
-      text-decoration: none;
-      color: var(--accent);
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-    .logo span { color: var(--text); }
-    .badge {
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 12px;
-      font-size: 2.2rem;
-    }
-    .intro {
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 18px;
-    }
-    .card h2 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-    .card p {
-      color: var(--text-secondary);
-      margin-bottom: 14px;
-    }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    .disclosure {
-      background: var(--accent-light);
-      padding: 16px;
-      border-radius: var(--radius);
-      margin: 28px 0;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-    .footer-links {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-    .footer-links a:hover {
-      color: var(--accent);
-    }
+    :root{--bg:#fafaf7;--surface:#fff;--text:#1a1a1a;--muted:#6b6b6b;--accent:#d4763a;--accent-light:#f5e6d8;--border:#e8e6e1;--shadow:0 1px 3px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.05);--radius:14px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    nav{background:var(--surface);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1120px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+    .logo{text-decoration:none;font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--accent)}
+    .logo span{color:var(--text)}
+    .lang-badge{background:var(--accent-light);color:var(--accent);padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:700}
+    .hero{max-width:1120px;margin:0 auto;padding:56px 20px 28px;text-align:center}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.8vw,3.3rem);line-height:1.15;margin-bottom:14px}
+    .hero h1 em{color:var(--accent);font-style:italic}
+    .hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:1.02rem}
+    .categories{max-width:1120px;margin:0 auto 28px;padding:0 20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .cat-tag{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 14px;color:var(--muted);font-size:.84rem;font-weight:600}
+    .grid{max-width:1120px;margin:0 auto;padding:0 20px 52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card-img{height:230px;background:linear-gradient(135deg,var(--accent-light),#eee3da);display:flex;align-items:center;justify-content:center;padding:18px}
+    .card-img img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
+    .card-body{padding:18px 18px 14px;display:flex;flex-direction:column;flex:1}
+    .card-category{color:var(--accent);font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+    .card-body h3{font-family:'Playfair Display',serif;font-size:1.16rem;line-height:1.35;margin-bottom:9px}
+    .card-body p{color:var(--muted);font-size:.92rem;margin-bottom:16px;flex:1}
+    .btn{display:inline-block;text-decoration:none;border-radius:10px;padding:10px 14px;font-size:.88rem;font-weight:700;background:var(--accent);color:#fff}
+    .about{max-width:860px;margin:0 auto;padding:8px 20px 42px;text-align:center;border-top:1px solid var(--border)}
+    .about h2{font-family:'Playfair Display',serif;font-size:1.7rem;margin:28px 0 14px}
+    .about p{color:var(--muted);margin-bottom:12px}
+    .disclosure{max-width:860px;margin:0 auto 36px;background:var(--accent-light);color:var(--muted);padding:16px 18px;border-radius:var(--radius);font-size:.88rem;text-align:center}
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:24px 20px;text-align:center}
+    .region-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+    .region-links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.9rem}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
+  <nav>
+    <div class="nav-inner">
       <a href="../" class="logo">Stella<span>Deals</span></a>
-      <span class="badge">DE</span>
+      <span class="lang-badge">DE</span>
     </div>
+  </nav>
 
-    <h1>Empfohlene Produkte für Amazon Deutschland</h1>
-    <p class="intro">Kaufberatung, Vergleiche und ausgewählte Produkte für Amazon Deutschland.</p>
+  <section class="hero">
+    <h1>Die besten Produkte,<br><em>für dich ausgewählt</em></h1>
+    <p>Eine einfache Auswahl an Produkten für Amazon Deutschland mit direkten Produktlinks.</p>
+  </section>
 
-    <div class="card">
-      <h2>Sony WH-1000XM5</h2>
-      <p>Beliebte Premium-Kopfhörer mit starkem Noise Cancelling und hohem Tragekomfort.</p>
-      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
-    </div>
-
-    <div class="card">
-      <h2>Garmin Forerunner</h2>
-      <p>Zuverlässige Sportuhren mit GPS und sehr guter Akkulaufzeit.</p>
-      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
-    </div>
-
-    <div class="card">
-      <h2>Robotersauger</h2>
-      <p>Gute Auswahl für Reinigung, Mapping und automatische Entleerung.</p>
-      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
-    </div>
-
-    <div class="disclosure">
-      Als Amazon-Partner kann StellaDeals an qualifizierten Verkäufen verdienen.
-    </div>
-
-    <div class="footer-links">
-      <a href="../">Home</a>
-      <a href="../fr/">France</a>
-      <a href="../es/">España</a>
-      <a href="../uk/">UK</a>
-      <a href="../nl/">Nederland</a>
-    </div>
+  <div class="categories">
+    <span class="cat-tag">🎧 Audio</span>
+    <span class="cat-tag">💻 Technik</span>
+    <span class="cat-tag">🏠 Zuhause</span>
+    <span class="cat-tag">💪 Fitness</span>
+    <span class="cat-tag">🎮 Gaming</span>
+    <span class="cat-tag">📱 Smartphone</span>
   </div>
+
+  <section class="grid">
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/51ztN4cT5GL._AC_SX679_.jpg" alt="Sony WH-CH520"></div><div class="card-body"><span class="card-category">Audio</span><h3>Sony WH-CH520</h3><p>Leichte kabellose Kopfhörer mit bis zu 50 Stunden Akkulaufzeit und Multipoint-Verbindung.</p><a class="btn" href="https://www.amazon.de/dp/B0BTJD6LCL" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/61V0Y7J8JVL._AC_SX679_.jpg" alt="INIU USB-C Kabel"></div><div class="card-body"><span class="card-category">Technik</span><h3>INIU USB-C Kabel 3.1A</h3><p>Praktisches 3er-Set aus Nylon mit Schnellladeunterstützung für den Alltag.</p><a class="btn" href="https://www.amazon.de/dp/B08J7PQGD7" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/81v8l7V6DqL._AC_SX679_.jpg" alt="Utopia Bedding Bettwäsche"></div><div class="card-body"><span class="card-category">Zuhause</span><h3>Utopia Bedding Bettwäsche-Set</h3><p>Mikrofaser-Set mit gutem Preis-Leistungs-Verhältnis und einfacher Pflege.</p><a class="btn" href="https://www.amazon.de/dp/B07J4H3MBJ" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/71Ek2WmL7qL._AC_SX679_.jpg" alt="Gritin Fitnessbänder"></div><div class="card-body"><span class="card-category">Fitness</span><h3>Gritin Fitnessbänder</h3><p>Set mit 5 Widerstandsstufen für Training, Stretching und Mobilität.</p><a class="btn" href="https://www.amazon.de/dp/B07L9WLKZQ" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/61ifIP7WLhL._AC_SX679_.jpg" alt="DualSense"></div><div class="card-body"><span class="card-category">Gaming</span><h3>Sony DualSense Controller</h3><p>Der offizielle PS5-Controller mit starkem Komfort und sehr guter Verarbeitung.</p><a class="btn" href="https://www.amazon.de/dp/B08H99BPJN" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+    <article class="card"><div class="card-img"><img src="https://m.media-amazon.com/images/I/71M0+DH8n7L._AC_SX679_.jpg" alt="Samsung Galaxy A16"></div><div class="card-body"><span class="card-category">Smartphone</span><h3>Samsung Galaxy A16</h3><p>AMOLED-Display, 5000-mAh-Akku und ein solides Gesamtpaket für jeden Tag.</p><a class="btn" href="https://www.amazon.de/dp/B0DKTJ22QN" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a></div></article>
+  </section>
+
+  <section class="about">
+    <h2>Über uns</h2>
+    <p>StellaDeals sammelt ausgewählte Produkte und organisiert sie nach Kategorien und Regionen.</p>
+  </section>
+
+  <div class="disclosure"><strong>Hinweis:</strong> Einige Links können Affiliate-Links sein.</div>
+
+  <footer>
+    <div class="region-links">
+      <a href="../">🇮🇹 Italia</a>
+      <a href="../fr/">🇫🇷 France</a>
+      <a href="../es/">🇪🇸 España</a>
+      <a href="../uk/">🇬🇧 United Kingdom</a>
+      <a href="../nl/">🇳🇱 Nederland</a>
+    </div>
+    <p>© 2026 StellaDeals</p>
+  </footer>
 </body>
 </html>
