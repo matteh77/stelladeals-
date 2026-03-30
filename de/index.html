@@ -8,16 +8,102 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'DM Sans', sans-serif; background:#FAFAF7; color:#1A1A1A; margin:0; }
-    .wrap { max-width: 1000px; margin: 0 auto; padding: 24px; }
-    .top { display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px; }
-    .logo { text-decoration:none; color:#D4763A; font-weight:700; font-size:28px; }
-    .logo span { color:#1A1A1A; }
-    .badge { background:#F5E6D8; color:#D4763A; padding:6px 12px; border-radius:20px; font-weight:700; }
-    .card { background:#fff; border:1px solid #E8E6E1; border-radius:12px; padding:24px; margin-bottom:20px; }
-    .btn { display:inline-block; margin-top:12px; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; }
-    .btn-primary { background:#D4763A; color:#fff; }
-    .footer-links a { margin-right:12px; color:#6B6B6B; text-decoration:none; }
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --text: #1A1A1A;
+      --text-secondary: #6B6B6B;
+      --accent: #D4763A;
+      --accent-light: #F5E6D8;
+      --border: #E8E6E1;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 24px;
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .logo {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--text); }
+    .badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 12px;
+      font-size: 2.2rem;
+    }
+    .intro {
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .card p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .disclosure {
+      background: var(--accent-light);
+      padding: 16px;
+      border-radius: var(--radius);
+      margin: 28px 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .footer-links {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -28,27 +114,29 @@
     </div>
 
     <h1>Empfohlene Produkte für Amazon Deutschland</h1>
-    <p>Ausgewählte Produkte, Kaufratgeber und ehrliche Empfehlungen.</p>
+    <p class="intro">Kaufberatung, Vergleiche und ausgewählte Produkte für Amazon Deutschland.</p>
 
     <div class="card">
       <h2>Sony WH-1000XM5</h2>
       <p>Beliebte Premium-Kopfhörer mit starkem Noise Cancelling und hohem Tragekomfort.</p>
-      <a class="btn btn-primary" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
+      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
     </div>
 
     <div class="card">
       <h2>Garmin Forerunner</h2>
       <p>Zuverlässige Sportuhren mit GPS und sehr guter Akkulaufzeit.</p>
-      <a class="btn btn-primary" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
+      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
     </div>
 
     <div class="card">
       <h2>Robotersauger</h2>
       <p>Gute Auswahl für Reinigung, Mapping und automatische Entleerung.</p>
-      <a class="btn btn-primary" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
+      <a class="btn" href="https://www.amazon.de/" target="_blank" rel="noopener noreferrer nofollow">Auf Amazon ansehen</a>
     </div>
 
-    <p><strong>Affiliate-Hinweis:</strong> Als Amazon-Partner kann StellaDeals an qualifizierten Verkäufen verdienen.</p>
+    <div class="disclosure">
+      Als Amazon-Partner kann StellaDeals an qualifizierten Verkäufen verdienen.
+    </div>
 
     <div class="footer-links">
       <a href="../">Home</a>
