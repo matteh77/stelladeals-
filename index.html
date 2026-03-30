@@ -1,433 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StellaDeals — Consigli e Offerte sui Migliori Prodotti</title>
-  <meta name="description" content="Scopri i migliori prodotti su Amazon: guide all'acquisto, confronti e consigli per scegliere il prodotto giusto per te." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StellaDeals</title>
 
-  <style>
-    :root {
-      --bg: #FAFAF7;
-      --surface: #FFFFFF;
-      --text: #1A1A1A;
-      --text-secondary: #6B6B6B;
-      --accent: #D4763A;
-      --accent-light: #F5E6D8;
-      --border: #E8E6E1;
-      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-      --shadow-hover: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
-      --radius: 12px;
-    }
+<style>
+body {
+  font-family: Arial;
+  background:#f7f7f7;
+  margin:0;
+}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+.container {
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+h1 {
+  text-align:center;
+}
 
-    nav {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
+.card {
+  background:white;
+  border-radius:10px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-    }
+.card img {
+  width:100%;
+  border-radius:10px;
+}
 
-    .logo span { color: var(--text); }
+.btn {
+  display:inline-block;
+  background:orange;
+  color:white;
+  padding:10px;
+  text-decoration:none;
+  border-radius:5px;
+  margin-top:10px;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    .lang-badge {
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem 3rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-      padding: 0 1rem;
-    }
-
-    .cat-tag {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 8px 18px;
-      border-radius: 24px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 4rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: box-shadow 0.3s, transform 0.3s;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-3px);
-    }
-
-    .card-img {
-      height: 180px;
-      background: linear-gradient(135deg, var(--accent-light), #e8ddd4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-
-    .card-body {
-      padding: 1.4rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card-category {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .card-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      line-height: 1.35;
-      margin-bottom: 0.6rem;
-    }
-
-    .card-body p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.92;
-    }
-
-    .btn-secondary {
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .btn-secondary:hover {
-      opacity: 0.92;
-    }
-
-    .card-footer {
-      padding: 0 1.4rem 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .date {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-
-    .about {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3rem 2rem 4rem;
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-
-    .about h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .about p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .disclosure {
-      background: var(--accent-light);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.5rem;
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      max-width: 760px;
-      margin: 0 auto 3rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .region-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .region-links a {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .region-links a:hover { color: var(--accent); }
-
-    footer p {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-
-    @media (max-width: 600px) {
-      .nav-links { gap: 0.8rem; }
-      .grid { grid-template-columns: 1fr; }
-      .hero { padding: 3rem 1.2rem 2rem; }
-    }
-  </style>
+footer {
+  text-align:center;
+  margin-top:30px;
+}
+</style>
 </head>
+
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="./" class="logo">Stella<span>Deals</span></a>
-      <div class="nav-links">
-        <a href="#articoli">Articoli</a>
-        <a href="#chi-siamo">Chi siamo</a>
-        <span class="lang-badge">IT</span>
-      </div>
-    </div>
-  </nav>
+<div class="container">
 
-  <section class="hero">
-    <h1>I migliori prodotti,<br><em>scelti per te</em></h1>
-    <p>
-      Guide all'acquisto, confronti e consigli per aiutarti a trovare prodotti validi su Amazon.
-      Stiamo aggiornando il sito con nuovi articoli e selezioni per ogni regione.
-    </p>
-  </section>
+<h1>🔥 Migliori prodotti Amazon</h1>
 
-  <div class="categories">
-    <span class="cat-tag">🎧 Audio</span>
-    <span class="cat-tag">💻 Tecnologia</span>
-    <span class="cat-tag">🏠 Casa</span>
-    <span class="cat-tag">🏋️ Fitness</span>
-    <span class="cat-tag">🎮 Gaming</span>
-    <span class="cat-tag">📱 Smartphone</span>
-  </div>
+<div class="grid">
 
-  <div class="grid" id="articoli">
+<!-- PRODOTTO 1 -->
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/61vJtKBH5DL._AC_SL1500_.jpg">
+<h3>Sony WH-1000XM5</h3>
+<p>Cuffie top con cancellazione del rumore e qualità audio altissima.</p>
 
-    <article class="card">
-      <div class="card-img">🎧</div>
-      <div class="card-body">
-        <span class="card-category">Audio</span>
-        <h3>Sony WH-1000XM5: una delle cuffie Bluetooth più consigliate</h3>
-        <p>
-          Ottima cancellazione del rumore, comfort elevato e qualità audio molto valida.
-          Una scelta solida per viaggi, studio e lavoro.
-        </p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="https://www.amazon.it/" target="_blank" rel="noopener noreferrer nofollow">Vedi su Amazon</a>
-          <a class="btn btn-secondary" href="./" rel="noopener">Approfondimento presto online</a>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="date">Aggiornato 2026</span>
-      </div>
-    </article>
+<a class="btn"
+href="https://www.amazon.it/dp/B09Y2MYL5C"
+target="_blank">Vedi su Amazon</a>
+</div>
 
-    <article class="card">
-      <div class="card-img">⌚</div>
-      <div class="card-body">
-        <span class="card-category">Fitness</span>
-        <h3>Garmin Forerunner: smartwatch sportivi tra i più affidabili</h3>
-        <p>
-          GPS preciso, batteria ottima e funzioni utili per corsa, palestra e attività quotidiane.
-        </p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="https://www.amazon.it/" target="_blank" rel="noopener noreferrer nofollow">Vedi su Amazon</a>
-          <a class="btn btn-secondary" href="./" rel="noopener">Approfondimento presto online</a>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="date">Aggiornato 2026</span>
-      </div>
-    </article>
+<!-- PRODOTTO 2 -->
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/61nBz6n9RDL._AC_SL1500_.jpg">
+<h3>Garmin Forerunner 255</h3>
+<p>Smartwatch perfetto per sport con GPS e lunga batteria.</p>
 
-    <article class="card">
-      <div class="card-img">🤖</div>
-      <div class="card-body">
-        <span class="card-category">Casa</span>
-        <h3>Robot aspirapolvere: modelli top per rapporto qualità/prezzo</h3>
-        <p>
-          Mappatura, lavaggio e svuotamento automatico sono le funzioni da valutare prima dell'acquisto.
-        </p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="https://www.amazon.it/" target="_blank" rel="noopener noreferrer nofollow">Vedi su Amazon</a>
-          <a class="btn btn-secondary" href="./" rel="noopener">Approfondimento presto online</a>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="date">Aggiornato 2026</span>
-      </div>
-    </article>
+<a class="btn"
+href="https://www.amazon.it/dp/B09YV9YF1T"
+target="_blank">Vedi su Amazon</a>
+</div>
 
-  </div>
+<!-- PRODOTTO 3 -->
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/61l5fE4zSLL._AC_SL1500_.jpg">
+<h3>Roborock Q7</h3>
+<p>Robot aspirapolvere intelligente con mappatura e lavaggio.</p>
 
-  <section class="about" id="chi-siamo">
-    <h2>Chi siamo</h2>
-    <p>
-      StellaDeals è un sito dedicato a guide all'acquisto, confronti e selezioni di prodotti venduti su Amazon.
-    </p>
-    <p>
-      L'obiettivo è semplice: raccogliere prodotti interessanti, confrontarli in modo chiaro e aiutare gli utenti a scegliere meglio.
-    </p>
-  </section>
+<a class="btn"
+href="https://www.amazon.it/dp/B09QG2QX9P"
+target="_blank">Vedi su Amazon</a>
+</div>
 
-  <div class="disclosure">
-    <strong>Disclosure affiliata:</strong>
-    Come affiliato Amazon, StellaDeals può ricevere una commissione dagli acquisti idonei effettuati tramite i link presenti sul sito, senza costi aggiuntivi per l'utente.
-  </div>
+</div>
 
-  <footer>
-    <div class="region-links">
-      <a href="./de/">🇩🇪 Deutschland</a>
-      <a href="./fr/">🇫🇷 France</a>
-      <a href="./es/">🇪🇸 España</a>
-      <a href="./uk/">🇬🇧 United Kingdom</a>
-      <a href="./nl/">🇳🇱 Nederland</a>
-    </div>
-    <p>© 2026 StellaDeals — Tutti i diritti riservati</p>
-  </footer>
+<footer>
+<p>Come affiliato Amazon guadagniamo dagli acquisti idonei</p>
+</footer>
+
+</div>
 
 </body>
 </html>
